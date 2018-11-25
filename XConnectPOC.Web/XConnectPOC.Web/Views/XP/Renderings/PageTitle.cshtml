@@ -1,0 +1,6 @@
+﻿@using Sitecore.Mvc.Presentation
+@{
+    var item = RenderingContext.Current.Rendering.Item;
+}
+
+<h1>@item.Fields["Title"]</h1>

@@ -1,0 +1,45 @@
+﻿@using Sitecore.XConnect.Collection.Model
+@using XConnectPOC.Analytics.Services
+@using XConnectPOC.Collection.Model.Facets
+
+@{
+    var email = HttpContext.Current.Request.QueryString["email"];
+    string message = string.Empty;
+    if (!string.IsNullOrEmpty(email))
+    {
+        Sitecore.Analytics.Tracker.Current.Session.IdentifyAs("Website", email);
+
+        XConnectPOC.Analytics.Services.XConnectClient client = new XConnectClient(Sitecore.Analytics.Tracker.Current.Contact);
+
+        var fn = HttpContext.Current.Request.QueryString["fn"];
+        var ln = HttpContext.Current.Request.QueryString["ln"];
+
+        if (!string.IsNullOrEmpty(fn) || !string.IsNullOrEmpty(ln))
+        {
+            var personalInforamtion = new PersonalInformation
+            {
+                FirstName = fn,
+                LastName = ln
+            };
+
+            client.SetFacet<PersonalInformation>(personalInforamtion, PersonalInformation.DefaultFacetKey);
+        }
+
+        var bi = HttpContext.Current.Request.QueryString["bi"];
+        if (!string.IsNullOrEmpty(bi))
+        {
+            client.SetFacet<BusinessIndustry>(new BusinessIndustry
+            {
+                Id = Guid.Parse(HttpContext.Current.Request.QueryString["bi"])
+            }, BusinessIndustry.DefaultFacetKey);
+        }
+
+        var emailAddressList = new EmailAddressList(new EmailAddress(email, true), "Website");
+
+            client.SetFacet<EmailAddressList>(emailAddressList, EmailAddressList.DefaultFacetKey).Submit();
+
+        message = email;
+    }
+}
+
+@message is now an identified contact.
