@@ -102,9 +102,10 @@
   <ItemGroup>
     <Content Include="App_Config\Include\XConnectPOC\XConnectPOC.Personalization.config" />
     <Content Include="Views\XP\Layouts\MainLayout.cshtml" />
-    <Content Include="Views\XP\Renderings\IdentifyContact.cshtml" />
+    <Content Include="Views\XP\Renderings\Register.cshtml" />
     <Content Include="Views\XP\Renderings\PageTitle.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\XP\Renderings\Login.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

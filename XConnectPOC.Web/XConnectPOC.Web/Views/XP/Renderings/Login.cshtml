@@ -1,0 +1,16 @@
+﻿@using Sitecore.XConnect.Collection.Model
+@using XConnectPOC.Analytics.Services
+@using XConnectPOC.Collection.Model.Facets
+
+@{
+    var email = HttpContext.Current.Request.QueryString["email"];
+    string message = string.Empty;
+    if (!string.IsNullOrEmpty(email))
+    {
+        Sitecore.Analytics.Tracker.Current.Session.IdentifyAs("Website", email);
+        message = email;
+    }
+}
+<h1>
+@message is now logged in.
+</h1>
