@@ -25,18 +25,31 @@
             client.SetFacet<PersonalInformation>(personalInforamtion, PersonalInformation.DefaultFacetKey);
         }
 
-        var bi = HttpContext.Current.Request.QueryString["bi"];
+        var bi = HttpContext.Current.Request.QueryString["industry"];
         if (!string.IsNullOrEmpty(bi))
         {
-            client.SetFacet<BusinessIndustry>(new BusinessIndustry
+            bi = bi.ToLower();
+            var industries = new Dictionary<string, string>
             {
-                Id = Guid.Parse(HttpContext.Current.Request.QueryString["bi"])
-            }, BusinessIndustry.DefaultFacetKey);
+                { "automobile", "{8A015E36-F9A4-4F2D-A33E-D27979EB03B9}" },
+                { "entertainment", "{962E01FC-76A2-4A28-A20B-DC4367BE2BA0}" },
+                { "finance", "{92BD944A-C5AA-421D-9A09-24498CD1559E}" }
+            };
+
+            if (industries.ContainsKey(bi))
+            {
+                bi = industries[bi];
+
+                client.SetFacet<BusinessIndustry>(new BusinessIndustry
+                {
+                    Id = Guid.Parse(bi)
+                }, BusinessIndustry.DefaultFacetKey);
+            }
         }
 
         var emailAddressList = new EmailAddressList(new EmailAddress(email, true), "Website");
 
-            client.SetFacet<EmailAddressList>(emailAddressList, EmailAddressList.DefaultFacetKey).Submit();
+        client.SetFacet<EmailAddressList>(emailAddressList, EmailAddressList.DefaultFacetKey).Submit();
 
         message = email;
     }
