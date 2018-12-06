@@ -1,0 +1,52 @@
+----item----
+version: 1
+id: {20D642E8-C139-4EFB-8DBF-C0C63D0973DD}
+database: master
+path: /sitecore/system/Settings/Rules/Definitions/Tags/XConnect - Business Industry/Visibility
+parent: {6791EB64-08F3-4988-A784-762FCF579DC1}
+name: Visibility
+master: {60E3E35B-CEF9-4AFA-9F89-204ED015CCB9}
+template: {AA91A868-02F2-41D3-8B78-1CAD91B4DCAE}
+templatekey: Visibility
+created: 20181118T063816Z
+
+----field----
+field: {F6D8A61C-2F84-4401-BD24-52D2068172BC}
+name: __Originator
+key: __originator
+content-length: 38
+
+{B1ECD86C-5B13-4698-A27A-CBE89DC12393}
+----version----
+language: en
+version: 1
+revision: b29082cd-6400-4196-8f74-df4968ca818e
+
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20181118T063816Z
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+b29082cd-6400-4196-8f74-df4968ca818e
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20181118T063816Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\admin
